@@ -1,3 +1,9 @@
+
 visa_electron.v1.0
 visa_classic.v1.0
 visa_gold.v1.0
+
+mastercard_electron.v1.0
+mastercard_standard.v1.0
+mastercard_maestro.v1.0
+
