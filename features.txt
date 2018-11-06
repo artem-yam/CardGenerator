@@ -1,1 +1,2 @@
 visa_electron.v1.0
+visa_classic.v1.0
