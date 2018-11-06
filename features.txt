@@ -1,1 +1,2 @@
 mastercard_electron.v1.0
+mastercard_standard.v1.0
