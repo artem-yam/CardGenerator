@@ -1,2 +1,3 @@
 mir_classic.v1.0
 mir_premium.v1.0
+mir_debet.v1.0
