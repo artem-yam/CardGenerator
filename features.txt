@@ -7,3 +7,8 @@ mastercard_electron.v1.0
 mastercard_standard.v1.0
 mastercard_maestro.v1.0
 
+
+mir_classic.v1.0
+mir_premium.v1.0
+mir_debet.v1.0
+
