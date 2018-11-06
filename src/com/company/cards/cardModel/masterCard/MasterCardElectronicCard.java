@@ -8,6 +8,7 @@ import com.company.cards.cardModel.BasicCard;
 public class MasterCardElectronicCard extends BasicCard {
 
     private static final String BANK_ID_NUMBER = "511111";
+    
     private static final int CARD_NUMBER_LENGTH = 16;
 
     /**
