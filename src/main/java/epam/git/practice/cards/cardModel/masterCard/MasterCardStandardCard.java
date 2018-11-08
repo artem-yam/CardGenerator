@@ -1,6 +1,6 @@
-package com.company.cards.cardModel.masterCard;
+package epam.git.practice.cards.cardModel.masterCard;
 
-import com.company.cards.cardModel.BasicCard;
+import epam.git.practice.cards.cardModel.BasicCard;
 
 /**
  * Class for generating number of MasterCard Standard cards

@@ -1,7 +1,7 @@
-package com.company.cards.utils.factory;
+package epam.git.practice.cards.utils;
 
-import com.company.cards.cardModel.CardTypesEnum;
-import com.company.cards.cardModel.Card;
+import epam.git.practice.cards.cardModel.CardTypesEnum;
+import epam.git.practice.cards.cardModel.Card;
 
 /**
  * Class-factory for getting cards class instance depending on cards type
@@ -14,7 +14,7 @@ public class CardFactory {
      * @param typeCard - Type of desired cards
      * @return - Desired cards
      */
-    public static Card getCard(String typeCard) {
+    public static Card getCard(String typeCard) throws IllegalArgumentException {
         Card card = null;
 
         try {
@@ -23,8 +23,6 @@ public class CardFactory {
             e1.printStackTrace();
         } catch (IllegalAccessException e2) {
             e2.printStackTrace();
-        } catch (IllegalArgumentException e3) {
-            System.out.println("Введен несуществующий тип карты: " + typeCard);
         }
 
         return card;

@@ -1,6 +1,6 @@
-package com.company.cards.cardModel.mir;
+package epam.git.practice.cards.cardModel.mir;
 
-import com.company.cards.cardModel.BasicCard;
+import epam.git.practice.cards.cardModel.BasicCard;
 
 /**
  * Class for generating number of Mir Premium cards

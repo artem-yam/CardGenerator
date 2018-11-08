@@ -1,11 +1,11 @@
-package com.company.cards.utils.numberGenerator;
+package epam.git.practice.cards.utils;
 
 import java.util.Random;
 
 /**
  * Class for generating cards number depending on BIN and number length
  */
-public class NumberGenerator {
+public class CardNumberGenerator {
 
 
     private static final Random RNG = new Random(System.currentTimeMillis());
@@ -31,6 +31,12 @@ public class NumberGenerator {
         return builder.toString();
     }
 
+    /**
+     * Method to get last digit of card number with Luhn algorithm
+     *
+     * @param numberCard card number without last digit
+     * @return correct last digit
+     */
     private static int getCheckDigit(String numberCard) {
         int sum = 0;
         int numberRest = ((numberCard.length() % 2) == 0) ? 1 : 0;
