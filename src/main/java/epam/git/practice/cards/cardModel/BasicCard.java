@@ -1,6 +1,6 @@
-package com.company.cards.cardModel;
+package epam.git.practice.cards.cardModel;
 
-import com.company.cards.utils.numberGenerator.NumberGenerator;
+import epam.git.practice.cards.utils.CardNumberGenerator;
 
 /**
  * Basic class for all cards
@@ -9,14 +9,14 @@ public abstract class BasicCard implements Card {
 
     protected String bankID;
     protected int numberLength;
-    private NumberGenerator cardNumberGenerator;
+    private CardNumberGenerator cardNumberGenerator;
 
 
     public BasicCard(String bankID, int numberLength) {
         this.bankID = bankID;
         this.numberLength = numberLength;
 
-        this.cardNumberGenerator = new NumberGenerator();
+        this.cardNumberGenerator = new CardNumberGenerator();
     }
 
     /**

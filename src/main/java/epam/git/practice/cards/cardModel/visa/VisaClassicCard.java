@@ -1,6 +1,6 @@
-package com.company.cards.cardModel.visa;
+package epam.git.practice.cards.cardModel.visa;
 
-import com.company.cards.cardModel.BasicCard;
+import epam.git.practice.cards.cardModel.BasicCard;
 
 /**
  * Class for generating number of Visa Classic cards
