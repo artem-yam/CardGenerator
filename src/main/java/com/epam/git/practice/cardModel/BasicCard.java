@@ -1,6 +1,6 @@
-package epam.git.practice.cards.cardModel;
+package com.epam.git.practice.cardModel;
 
-import epam.git.practice.cards.utils.CardNumberGenerator;
+import com.epam.git.practice.utils.CardNumberGenerator;
 
 /**
  * Basic class for all cards

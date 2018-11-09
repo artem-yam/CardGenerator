@@ -1,14 +1,14 @@
-package epam.git.practice.cards.cardModel;
+package com.epam.git.practice.cardModel;
 
-import epam.git.practice.cards.cardModel.masterCard.MasterCardElectronicCard;
-import epam.git.practice.cards.cardModel.masterCard.MasterCardMaestroCard;
-import epam.git.practice.cards.cardModel.masterCard.MasterCardStandardCard;
-import epam.git.practice.cards.cardModel.mir.MirClassicCard;
-import epam.git.practice.cards.cardModel.mir.MirDebetCard;
-import epam.git.practice.cards.cardModel.mir.MirPremiumCard;
-import epam.git.practice.cards.cardModel.visa.VisaClassicCard;
-import epam.git.practice.cards.cardModel.visa.VisaElectronCard;
-import epam.git.practice.cards.cardModel.visa.VisaGoldCard;
+import com.epam.git.practice.cardModel.mir.MirClassicCard;
+import com.epam.git.practice.cardModel.mir.MirDebetCard;
+import com.epam.git.practice.cardModel.mir.MirPremiumCard;
+import com.epam.git.practice.cardModel.visa.VisaElectronCard;
+import com.epam.git.practice.cardModel.masterCard.MasterCardElectronicCard;
+import com.epam.git.practice.cardModel.masterCard.MasterCardMaestroCard;
+import com.epam.git.practice.cardModel.masterCard.MasterCardStandardCard;
+import com.epam.git.practice.cardModel.visa.VisaClassicCard;
+import com.epam.git.practice.cardModel.visa.VisaGoldCard;
 
 /**
  * Enum of cards types

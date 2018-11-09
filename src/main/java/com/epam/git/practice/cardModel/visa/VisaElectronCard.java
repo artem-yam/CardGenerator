@@ -1,6 +1,6 @@
-package epam.git.practice.cards.cardModel.visa;
+package com.epam.git.practice.cardModel.visa;
 
-import epam.git.practice.cards.cardModel.BasicCard;
+import com.epam.git.practice.cardModel.BasicCard;
 
 /**
  * Class for generating number of Visa Electron cards

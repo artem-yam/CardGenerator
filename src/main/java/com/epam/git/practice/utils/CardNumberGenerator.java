@@ -1,4 +1,4 @@
-package epam.git.practice.cards.utils;
+package com.epam.git.practice.utils;
 
 import java.util.Random;
 
@@ -15,11 +15,11 @@ public class CardNumberGenerator {
      * Method for generating cards number
      *
      * @param bankIdNumber - Bank Identification Number (first six digits of generating number)
-     * @param NumberLength - Length of generating number
+     * @param numberLength - Length of generating number
      * @return Generated cards number
      */
-    public String generate(String bankIdNumber, int NumberLength) {
-        int randomNumberLength = NumberLength - (bankIdNumber.length() - 1);
+    public String generate(String bankIdNumber, int numberLength) {
+        int randomNumberLength = numberLength - (bankIdNumber.length() - 1);
 
         StringBuilder builder = new StringBuilder(bankIdNumber);
 
