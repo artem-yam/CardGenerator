@@ -1,6 +1,6 @@
-package epam.git.practice.cards.cardModel.mir;
+package com.epam.git.practice.cardModel.mir;
 
-import epam.git.practice.cards.cardModel.BasicCard;
+import com.epam.git.practice.cardModel.BasicCard;
 
 /**
  * Class for generating number of Mir Classic cards

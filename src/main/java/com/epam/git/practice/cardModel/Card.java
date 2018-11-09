@@ -1,4 +1,4 @@
-package epam.git.practice.cards.cardModel;
+package com.epam.git.practice.cardModel;
 
 /**
  * Interface for bank cards

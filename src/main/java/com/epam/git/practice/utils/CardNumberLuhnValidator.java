@@ -1,4 +1,4 @@
-package epam.git.practice.cards.utils;
+package com.epam.git.practice.utils;
 
 /**
  * Class for cards number validation with Luhn algorithm

@@ -1,6 +1,6 @@
-package epam.git.practice.cards.cardModel.masterCard;
+package com.epam.git.practice.cardModel.masterCard;
 
-import epam.git.practice.cards.cardModel.BasicCard;
+import com.epam.git.practice.cardModel.BasicCard;
 
 /**
  * Class for generating number of MasterCard Maestro cards

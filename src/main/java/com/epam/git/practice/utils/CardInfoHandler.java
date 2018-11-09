@@ -1,9 +1,9 @@
-package epam.git.practice.cards.utils;
+package com.epam.git.practice.utils;
 
-import epam.git.practice.cards.cardModel.Card;
+import com.epam.git.practice.cardModel.Card;
 
 /**
- * Class for generating valid cards numbers depending on input cards types
+ * Class for handling information about certain card
  */
 public class CardInfoHandler {
 
