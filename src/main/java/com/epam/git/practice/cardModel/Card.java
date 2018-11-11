@@ -6,9 +6,9 @@ package com.epam.git.practice.cardModel;
 public interface Card {
 
     /**
-     * Method for getting cards number
+     * Method for generating card number
      *
      * @return Card number
      */
-    String getNumber();
+    String generateNumber();
 }

@@ -1,11 +1,11 @@
-package com.epam.git.practice.utils;
+package com.epam.git.practice.utils.numberGeneration;
 
 import java.util.Random;
 
 /**
- * Class for generating cards number depending on BIN and number length
+ * Class for generating card number depending on BIN and number length
  */
-public class CardNumberGenerator {
+public class LuhnNumberGenerator implements NumberGenerator {
 
 
     private static final Random RNG = new Random(System.currentTimeMillis());
@@ -18,7 +18,8 @@ public class CardNumberGenerator {
      * @param numberLength - Length of generating number
      * @return Generated cards number
      */
-    public String generate(String bankIdNumber, int numberLength) {
+    @Override
+    public String generateNumber(String bankIdNumber, int numberLength) {
         int randomNumberLength = numberLength - (bankIdNumber.length() - 1);
 
         StringBuilder builder = new StringBuilder(bankIdNumber);

@@ -28,7 +28,7 @@ public enum CardTypesEnum {
     private Class card;
 
     /**
-     * Constructor of enum values depending on cards class
+     * Constructor of enum values depending on card class
      *
      * @param cardClass - Class of desired enum value
      */
@@ -37,7 +37,7 @@ public enum CardTypesEnum {
     }
 
     /**
-     * Method for getting cards class
+     * Method for getting card class
      *
      * @return Card class
      */
