@@ -14,8 +14,9 @@ public class CardFactory {
      * @param typeCard - Type of desired cards
      * @return - Desired cards
      */
-    public static Card getCard(String typeCard) throws InstantiationException, IllegalAccessException, IllegalArgumentException {
-        Card card = (Card) CardTypesEnum.valueOf(typeCard).getCard().newInstance();
+    public static Card
+    getCard(String typeCard) throws InstantiationException, IllegalAccessException, IllegalArgumentException {
+        Card card = (Card) CardTypesEnum.valueOf(typeCard.toUpperCase()).getCard().newInstance();
 
         return card;
     }

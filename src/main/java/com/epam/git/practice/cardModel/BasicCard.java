@@ -1,31 +1,36 @@
 package com.epam.git.practice.cardModel;
 
-import com.epam.git.practice.utils.CardNumberGenerator;
+import com.epam.git.practice.utils.numberGeneration.LuhnNumberGenerator;
+import com.epam.git.practice.utils.numberGeneration.NumberGenerator;
 
 /**
- * Basic class for all cards
+ * Basic class of all cards
  */
 public abstract class BasicCard implements Card {
 
-    protected String bankID;
-    protected int numberLength;
-    private CardNumberGenerator cardNumberGenerator;
+    private String bankID;
+    private int numberLength;
+    private NumberGenerator cardNumberGenerator = new LuhnNumberGenerator();
+    ;
 
-
+    /**
+     * Method-constructor for basic class of all cards
+     *
+     * @param bankID       bank id number
+     * @param numberLength length of the card number
+     */
     public BasicCard(String bankID, int numberLength) {
         this.bankID = bankID;
         this.numberLength = numberLength;
-
-        this.cardNumberGenerator = new CardNumberGenerator();
     }
 
     /**
-     * Method for getting cards number
+     * Method for generating card number
      *
      * @return Card number
      */
     @Override
-    public String getNumber() {
-        return cardNumberGenerator.generate(bankID, numberLength);
+    public String generateNumber() {
+        return cardNumberGenerator.generateNumber(bankID, numberLength);
     }
 }
