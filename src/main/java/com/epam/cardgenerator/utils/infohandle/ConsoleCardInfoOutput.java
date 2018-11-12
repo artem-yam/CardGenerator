@@ -5,7 +5,7 @@ import com.epam.cardgenerator.cardmodel.Card;
 /**
  * Class for handling information about certain card
  */
-public class ConsoleCardInfoHandler implements CardInfoOutput {
+public class ConsoleCardInfoOutput implements CardInfoOutput {
 
     /**
      * Method for printing certain card information: it's name, number, validity check

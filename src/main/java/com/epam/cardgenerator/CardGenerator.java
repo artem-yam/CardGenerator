@@ -3,7 +3,7 @@ package com.epam.cardgenerator;
 import com.epam.cardgenerator.cardmodel.Card;
 import com.epam.cardgenerator.utils.CardFactory;
 import com.epam.cardgenerator.utils.infohandle.CardInfoOutput;
-import com.epam.cardgenerator.utils.infohandle.ConsoleCardInfoHandler;
+import com.epam.cardgenerator.utils.infohandle.ConsoleCardInfoOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CardGenerator {
 
-    private CardInfoOutput cardInfoHandler = new ConsoleCardInfoHandler();
+    private CardInfoOutput cardInfoOutput = new ConsoleCardInfoOutput();
 
     /**
      * Program entry point
@@ -26,12 +26,21 @@ public class CardGenerator {
     }
 
     /**
+     * Method-setter for cardInfoOutput
+     *
+     * @param cardInfoOutput cardInfoOutput
+     */
+    public void setCardInfoOutput(CardInfoOutput cardInfoOutput) {
+        this.cardInfoOutput = cardInfoOutput;
+    }
+
+    /**
      * Method for output certain card info
      *
      * @param card card
      */
     public void outputCardInfo(Card card) {
-        cardInfoHandler.outputCardInfo(card);
+        cardInfoOutput.outputCardInfo(card);
     }
 
     /**
@@ -64,13 +73,12 @@ public class CardGenerator {
 
                 cardsList.add(generateCard(cardType));
 
-
             } catch (InstantiationException instantiationException) {
-                cardInfoHandler.outputCardException(instantiationException);
+                cardInfoOutput.outputCardException(instantiationException);
             } catch (IllegalAccessException illegalAccessException) {
-                cardInfoHandler.outputCardException(illegalAccessException);
+                cardInfoOutput.outputCardException(illegalAccessException);
             } catch (IllegalArgumentException illegalArgumentException) {
-                cardInfoHandler.outputCardException(illegalArgumentException);
+                cardInfoOutput.outputCardException(illegalArgumentException);
             }
 
         }
