@@ -24,6 +24,15 @@ public abstract class BasicCard implements Card {
     }
 
     /**
+     * Method-setter for cardNumberGenerator
+     *
+     * @param cardNumberGenerator cardNumberGenerator
+     */
+    public void setCardNumberGenerator(NumberGenerator cardNumberGenerator) {
+        this.cardNumberGenerator = cardNumberGenerator;
+    }
+
+    /**
      * Method for generating card number
      *
      * @return Card number

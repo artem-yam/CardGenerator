@@ -5,7 +5,7 @@ import com.epam.cardgenerator.cardmodel.Card;
 /**
  * Class for output different information about card
  */
-public interface CardInfoOutput {
+public interface InfoOutput {
 
     /**
      * Method for printing card information: it's name, number, validity check

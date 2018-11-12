@@ -2,8 +2,8 @@ package com.epam.cardgenerator;
 
 import com.epam.cardgenerator.cardmodel.Card;
 import com.epam.cardgenerator.utils.CardFactory;
-import com.epam.cardgenerator.utils.infohandle.CardInfoOutput;
-import com.epam.cardgenerator.utils.infohandle.ConsoleCardInfoOutput;
+import com.epam.cardgenerator.utils.infohandle.ConsoleInfoOutput;
+import com.epam.cardgenerator.utils.infohandle.InfoOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CardGenerator {
 
-    private CardInfoOutput cardInfoOutput = new ConsoleCardInfoOutput();
+    private InfoOutput cardInfoOutput = new ConsoleInfoOutput();
 
     /**
      * Program entry point
@@ -30,7 +30,7 @@ public class CardGenerator {
      *
      * @param cardInfoOutput cardInfoOutput
      */
-    public void setCardInfoOutput(CardInfoOutput cardInfoOutput) {
+    public void setCardInfoOutput(InfoOutput cardInfoOutput) {
         this.cardInfoOutput = cardInfoOutput;
     }
 
@@ -60,19 +60,19 @@ public class CardGenerator {
     }
 
     /**
-     * Method for processing cards numbergenerator: generating cards depending on input cards types
+     * Method for processing cards generation: generating cards depending on input cards types
      * and output their information
      *
      * @param cardTypes String with card types
      */
-    public void processGeneration(String[] cardTypes) {
-        List<Card> cardsList = new ArrayList<Card>();
+    public List<Card> processGeneration(String[] cardTypes) {
+        List<Card> cardList = new ArrayList<Card>();
 
         for (String cardType : cardTypes) {
             try {
-
-                cardsList.add(generateCard(cardType));
-
+                Card card = generateCard(cardType);
+                outputCardInfo(card);
+                cardList.add(card);
             } catch (InstantiationException instantiationException) {
                 cardInfoOutput.outputCardException(instantiationException);
             } catch (IllegalAccessException illegalAccessException) {
@@ -80,12 +80,9 @@ public class CardGenerator {
             } catch (IllegalArgumentException illegalArgumentException) {
                 cardInfoOutput.outputCardException(illegalArgumentException);
             }
-
         }
 
-        for (Card card : cardsList) {
-            outputCardInfo(card);
-        }
+        return cardList;
     }
 
 }

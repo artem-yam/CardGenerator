@@ -5,7 +5,7 @@ import com.epam.cardgenerator.cardmodel.Card;
 /**
  * Class for handling information about certain card
  */
-public class ConsoleCardInfoOutput implements CardInfoOutput {
+public class ConsoleInfoOutput implements InfoOutput {
 
     /**
      * Method for printing certain card information: it's name, number, validity check
@@ -14,7 +14,9 @@ public class ConsoleCardInfoOutput implements CardInfoOutput {
      */
     @Override
     public void outputCardInfo(Card card) {
-        System.out.println(card.getClass().getSimpleName() + ": " + card.generateNumber());
+        System.out.println(card.getClass().getPackage().getName().
+                substring(card.getClass().getPackage().getName().lastIndexOf(".") + 1)
+                + " " + card.getClass().getSimpleName() + ": " + card.generateNumber());
     }
 
     /**
