@@ -66,22 +66,17 @@ public class CardGenerator {
      * @param cardTypes String with card types
      */
     public List<Card> processGeneration(String[] cardTypes) {
-        List<Card> cardList = new ArrayList<Card>();
+        List<Card> cardList = new ArrayList<>();
 
         for (String cardType : cardTypes) {
             try {
                 Card card = generateCard(cardType);
                 outputCardInfo(card);
                 cardList.add(card);
-            } catch (InstantiationException instantiationException) {
-                cardInfoOutput.outputCardException(instantiationException);
-            } catch (IllegalAccessException illegalAccessException) {
-                cardInfoOutput.outputCardException(illegalAccessException);
-            } catch (IllegalArgumentException illegalArgumentException) {
-                cardInfoOutput.outputCardException(illegalArgumentException);
+            } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
+                cardInfoOutput.outputCardException(exception);
             }
         }
-
         return cardList;
     }
 
