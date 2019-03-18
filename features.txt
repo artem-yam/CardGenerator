@@ -13,3 +13,5 @@ mir_premium.v1.0
 mir_debet.v1.0
 
 added some unit tests
+
+added logs
