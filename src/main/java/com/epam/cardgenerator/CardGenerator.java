@@ -2,10 +2,11 @@ package com.epam.cardgenerator;
 
 import com.epam.cardgenerator.cardmodel.Card;
 import com.epam.cardgenerator.utils.CardFactory;
-import com.epam.cardgenerator.utils.infohandle.ConsoleInfoOutput;
-import com.epam.cardgenerator.utils.infohandle.InfoOutput;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,7 +14,12 @@ import java.util.List;
  */
 public class CardGenerator {
 
-    private InfoOutput cardInfoOutput = new ConsoleInfoOutput();
+    public static final String METHOD_INPUT_MESSAGE =
+            "Method \"{}\" input arguments: {}";
+    public static final String METHOD_OUTPUT_MESSAGE =
+            "Method \"{}\" output value: {}";
+    private static final Logger logger = LogManager.getLogger(
+            CardGenerator.class);
 
     /**
      * Program entry point
@@ -21,26 +27,7 @@ public class CardGenerator {
      * @param args program arguments
      */
     public static void main(String[] args) {
-        CardGenerator cardGenerator = new CardGenerator();
-        cardGenerator.processGeneration(args);
-    }
-
-    /**
-     * Method-setter for cardInfoOutput
-     *
-     * @param cardInfoOutput cardInfoOutput
-     */
-    public void setCardInfoOutput(InfoOutput cardInfoOutput) {
-        this.cardInfoOutput = cardInfoOutput;
-    }
-
-    /**
-     * Method for output certain card info
-     *
-     * @param card card
-     */
-    public void outputCardInfo(Card card) {
-        cardInfoOutput.outputCardInfo(card);
+        new CardGenerator().processGeneration(args);
     }
 
     /**
@@ -52,31 +39,62 @@ public class CardGenerator {
      * @throws IllegalAccessException   IllegalAccessException
      * @throws IllegalArgumentException IllegalArgumentException
      */
-    public Card generateCard(String cardType) throws InstantiationException,
-            IllegalAccessException, IllegalArgumentException {
-        Card card = CardFactory.getCard(cardType);
+    public Card generateCard(String cardType)
+            throws InstantiationException, IllegalAccessException {
 
-        return card;
+        logger.trace(METHOD_INPUT_MESSAGE,
+                "public Card generateCard(String cardType) " +
+                        "throws InstantiationException," +
+                        "IllegalAccessException", "cardType = " + cardType);
+
+        Card generatedCard = CardFactory.getCard(cardType);
+
+        logger.trace(METHOD_OUTPUT_MESSAGE,
+                "public Card generateCard(String cardType) " +
+                        "throws InstantiationException," +
+                        "IllegalAccessException", generatedCard);
+
+        return generatedCard;
     }
 
     /**
-     * Method for processing cards generation: generating cards depending on input cards types
-     * and output their information
+     * Method for processing cards generation: generating cards depending on
+     * input cards types and output their information
      *
      * @param cardTypes String with card types
      */
     public List<Card> processGeneration(String[] cardTypes) {
+
+        if (cardTypes.length != 0) {
+            logger.trace(METHOD_INPUT_MESSAGE,
+                    "public List<Card> processGeneration" +
+                            "(String[] cardTypes)",
+                    "cardTypes = " + Arrays.toString(cardTypes));
+        } else {
+            logger.warn("Input card types are empty");
+        }
+
         List<Card> cardList = new ArrayList<>();
+
+        logger.debug("Starting cards generation: {}",
+                Arrays.toString(cardTypes));
 
         for (String cardType : cardTypes) {
             try {
                 Card card = generateCard(cardType);
-                outputCardInfo(card);
+
+                logger.info(card);
+
                 cardList.add(card);
             } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
-                cardInfoOutput.outputCardException(exception);
+                logger.error(exception);
             }
         }
+
+        logger.trace(METHOD_OUTPUT_MESSAGE,
+                "public List<Card> processGeneration (String[] cardTypes)",
+                cardList);
+
         return cardList;
     }
 

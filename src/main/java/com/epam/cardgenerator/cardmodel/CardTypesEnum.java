@@ -1,20 +1,22 @@
 package com.epam.cardgenerator.cardmodel;
 
+import com.epam.cardgenerator.CardGenerator;
 import com.epam.cardgenerator.cardmodel.mastercard.Electronic;
 import com.epam.cardgenerator.cardmodel.mastercard.Maestro;
 import com.epam.cardgenerator.cardmodel.mastercard.Standard;
 import com.epam.cardgenerator.cardmodel.mir.Debet;
 import com.epam.cardgenerator.cardmodel.mir.Premium;
-import com.epam.cardgenerator.cardmodel.visa.Classic;
 import com.epam.cardgenerator.cardmodel.visa.Electron;
 import com.epam.cardgenerator.cardmodel.visa.Gold;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Enum of cards types
  */
 public enum CardTypesEnum {
 
-    VISACLASSIC(Classic.class),
+    VISACLASSIC(com.epam.cardgenerator.cardmodel.visa.Classic.class),
     VISAELECTRON(Electron.class),
     VISAGOLD(Gold.class),
     MASTERCARDSTANDARD(Standard.class),
@@ -24,6 +26,8 @@ public enum CardTypesEnum {
     MIRPREMIUM(Premium.class),
     MIRDEBET(Debet.class);
 
+    private static final Logger logger = LogManager.getLogger(
+            CardTypesEnum.class);
     private Class card;
 
     /**
@@ -41,6 +45,9 @@ public enum CardTypesEnum {
      * @return Card class
      */
     public Class getCard() {
+        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
+                "public Class getCard()", card);
+
         return card;
     }
 
