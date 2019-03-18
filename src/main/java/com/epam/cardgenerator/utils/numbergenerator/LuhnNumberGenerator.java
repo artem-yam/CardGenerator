@@ -1,11 +1,18 @@
 package com.epam.cardgenerator.utils.numbergenerator;
 
+import com.epam.cardgenerator.CardGenerator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Random;
 
 /**
  * Class for generating card number depending on BIN and number length
  */
 public class LuhnNumberGenerator implements NumberGenerator {
+
+    private static final Logger logger =
+            LogManager.getLogger(LuhnNumberGenerator.class);
 
     private static final Random RND = new Random(System.currentTimeMillis());
     private static final int RADIX = 10;
@@ -17,6 +24,10 @@ public class LuhnNumberGenerator implements NumberGenerator {
      * @return correct last digit
      */
     private static int getCheckDigit(String cardNumber) {
+
+        logger.trace(CardGenerator.METHOD_INPUT_MESSAGE,
+                "private static int getCheckDigit(String cardNumber)",
+                "cardNumber = " + cardNumber);
 
         int sum = 0;
         int numberRest = ((cardNumber.length() % 2) == 0) ? 1 : 0;
@@ -34,7 +45,13 @@ public class LuhnNumberGenerator implements NumberGenerator {
 
         int mod = sum % 10;
 
-        return (mod == 0) ? 0 : 10 - mod;
+        int checkDigit = ((mod == 0) ? 0 : 10 - mod);
+
+        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
+                "private static int getCheckDigit(String cardNumber)",
+                checkDigit);
+
+        return checkDigit;
     }
 
     /**
@@ -47,6 +64,12 @@ public class LuhnNumberGenerator implements NumberGenerator {
     @Override
     public String generateNumber(String bankIdNumber, int numberLength) {
 
+        logger.trace(CardGenerator.METHOD_INPUT_MESSAGE,
+                "public String generateNumber(String bankIdNumber, " +
+                        "int numberLength)",
+                String.format("bankIdNumber = %s, numberLength = %d",
+                        bankIdNumber, numberLength));
+
         int randomNumberLength = numberLength - bankIdNumber.length() - 1;
 
         StringBuilder builder = new StringBuilder(bankIdNumber);
@@ -56,6 +79,11 @@ public class LuhnNumberGenerator implements NumberGenerator {
         }
 
         builder.append(getCheckDigit(builder.toString()));
+
+        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
+                "public String generateNumber(String bankIdNumber, " +
+                        "int numberLength)",
+                builder);
 
         return builder.toString();
     }
