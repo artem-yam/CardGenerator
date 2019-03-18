@@ -14,9 +14,7 @@ public class ConsoleInfoOutput implements InfoOutput {
      */
     @Override
     public void outputCardInfo(Card card) {
-        System.out.println(card.getClass().getPackage().getName().
-                substring(card.getClass().getPackage().getName().lastIndexOf(".") + 1)
-                + " " + card.getClass().getSimpleName() + ": " + card.generateNumber());
+        System.out.println(card);
     }
 
     /**

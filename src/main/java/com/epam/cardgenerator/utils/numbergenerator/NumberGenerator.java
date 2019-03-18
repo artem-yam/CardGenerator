@@ -13,5 +13,4 @@ public interface NumberGenerator {
      * @return Generated cards number
      */
     String generateNumber(String bankIdNumber, int numberLength);
-
 }

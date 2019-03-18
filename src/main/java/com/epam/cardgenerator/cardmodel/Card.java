@@ -10,5 +10,12 @@ public interface Card {
      *
      * @return Card number
      */
-    String generateNumber();
+
+    String getBankID();
+
+    int getNumberLength();
+
+    String generateNewNumber();
+
+    String getNumber();
 }
