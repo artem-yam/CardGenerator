@@ -98,6 +98,26 @@ public class CardGenerator {
         return cardList;
     }
 
+    public String getCardNumber(String cardType) {
+
+        logger.trace(METHOD_INPUT_MESSAGE,
+                "public String getCardNumber(String cardType)",
+                "cardType = " + cardType);
+
+        String number = "";
+        try {
+            number = generateCard(cardType).getNumber();
+
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
+            logger.error(exception);
+        }
+
+        logger.trace(METHOD_OUTPUT_MESSAGE,
+                "public String getCardNumber(String cardType)",
+                number);
+
+        return number;
+    }
 }
 
 
