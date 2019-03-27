@@ -19,12 +19,12 @@ public class SystemOutputTest {
             new ByteArrayOutputStream();
 
     @Before
-    public void setUpStreams() {
+    public void setUpStream() {
         System.setOut(new PrintStream(outputStream));
     }
 
     @After
-    public void cleanUpStreams() {
+    public void cleanUpStream() {
         System.setOut(consoleStream);
     }
 

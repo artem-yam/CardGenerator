@@ -3,16 +3,16 @@
     <Appenders>
 
         <Console name="CONSOLE-INFO" target="SYSTEM_OUT">
-            <PatternLayout
-                    pattern="%d %5p %c %m %n"/>
+            <PatternLayout charset="UTF-8"
+                           pattern="%d %5p %c %m %n"/>
         </Console>
 
         <RollingFile name="FILE-DEBUG" fileName="cardGenerator.log"
                      filePattern="cardGenerator_%i.log">
-            <PatternLayout
-                    pattern="%d %5p %c %m %n" charset="UTF-8"/>
+            <PatternLayout charset="UTF-8"
+                           pattern="%d %5p %c %m %n"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="5 KB"/>
+                <SizeBasedTriggeringPolicy size="50 KB"/>
             </Policies>
             <DefaultRolloverStrategy max="3"/>
         </RollingFile>
@@ -23,7 +23,7 @@
 
         <root level="trace">
             <appender-ref ref="CONSOLE-INFO" level="info"/>
-            <appender-ref ref="FILE-DEBUG" level="debug"/>
+            <appender-ref ref="FILE-DEBUG" level="trace"/>
         </root>
 
     </Loggers>

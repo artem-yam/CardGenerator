@@ -4,7 +4,7 @@ import com.epam.cardgenerator.CardGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * Class for generating card number depending on BIN and number length
@@ -14,7 +14,7 @@ public class LuhnNumberGenerator implements NumberGenerator {
     private static final Logger logger =
             LogManager.getLogger(LuhnNumberGenerator.class);
 
-    private static final Random RND = new Random(System.currentTimeMillis());
+    private static final SecureRandom RND = new SecureRandom();
     private static final int RADIX = 10;
 
     /**

@@ -49,7 +49,7 @@ public class AppInputParamsTest {
     }
 
     @Test
-    public void test() {
+    public void testApplicationInputParameters() {
         try {
             Card card = new CardGenerator().generateCard(cardType);
 

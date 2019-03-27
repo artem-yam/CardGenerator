@@ -65,19 +65,14 @@ public class CardGenerator {
      */
     public List<Card> processGeneration(String[] cardTypes) {
 
-        if (cardTypes.length != 0) {
-            logger.trace(METHOD_INPUT_MESSAGE,
-                    "public List<Card> processGeneration" +
-                            "(String[] cardTypes)",
-                    "cardTypes = " + Arrays.toString(cardTypes));
-        } else {
+        logger.debug("Starting cards generation: {}",
+                Arrays.toString(cardTypes));
+
+        if (cardTypes.length == 0) {
             logger.warn("Input card types are empty");
         }
 
         List<Card> cardList = new ArrayList<>();
-
-        logger.debug("Starting cards generation: {}",
-                Arrays.toString(cardTypes));
 
         for (String cardType : cardTypes) {
             try {
@@ -87,12 +82,12 @@ public class CardGenerator {
 
                 cardList.add(card);
             } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
-                logger.error(exception);
+                logger.error("Can't generate card for type " + cardType,
+                        exception);
             }
         }
 
-        logger.trace(METHOD_OUTPUT_MESSAGE,
-                "public List<Card> processGeneration (String[] cardTypes)",
+        logger.debug("Generated cards:{}",
                 cardList);
 
         return cardList;

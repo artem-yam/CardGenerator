@@ -36,7 +36,7 @@ public class CardNumberCorrectnessTest {
         return parameters;
     }
 
-    private boolean luhnCheck(String cardNumber, int radix) {
+    private boolean luhnCheck(String cardNumber) {
 
         String reverseNumber =
                 new StringBuffer(cardNumber).reverse().toString();
@@ -45,7 +45,7 @@ public class CardNumberCorrectnessTest {
         int evenPositionNumbersSum = 0;
 
         for (int i = 0; i < reverseNumber.length(); i++) {
-            int digit = Character.digit(reverseNumber.charAt(i), radix);
+            int digit = Character.digit(reverseNumber.charAt(i), 10);
 
             if ((i % 2) == 0)
                 evenPositionNumbersSum += digit;
@@ -62,7 +62,7 @@ public class CardNumberCorrectnessTest {
 
     @Test
     public void checkCardNumberWithLuhnAlgorithm() {
-        assertTrue( luhnCheck(testedCard.getNumber(),10));
+        assertTrue( luhnCheck(testedCard.getNumber()));
     }
 
     @Test
