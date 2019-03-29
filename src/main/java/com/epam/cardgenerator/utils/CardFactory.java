@@ -1,6 +1,5 @@
 package com.epam.cardgenerator.utils;
 
-import com.epam.cardgenerator.CardGenerator;
 import com.epam.cardgenerator.cardmodel.Card;
 import com.epam.cardgenerator.cardmodel.CardTypesEnum;
 import org.apache.logging.log4j.LogManager;
@@ -26,20 +25,12 @@ public class CardFactory {
     public static Card getCard(String cardType)
             throws InstantiationException, IllegalAccessException {
 
-        logger.trace(CardGenerator.METHOD_INPUT_MESSAGE,
-                "public static Card getCard(String typeCard) " +
-                        "throws InstantiationException, IllegalAccessException",
-                "cardType = " + cardType);
-
         logger.debug("Trying to get a card of type: {}", cardType);
 
         Card newCard = (Card) CardTypesEnum.valueOf(cardType.toUpperCase())
                                            .getCard().newInstance();
 
-        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
-                "public static Card getCard(String typeCard) " +
-                        "throws InstantiationException, IllegalAccessException",
-                newCard);
+        logger.debug("Generated card: {} {}", cardType, newCard.getNumber());
 
         return newCard;
     }

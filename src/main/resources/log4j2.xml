@@ -12,7 +12,7 @@
             <PatternLayout charset="UTF-8"
                            pattern="%d %5p %c %m %n"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="50 KB"/>
+                <SizeBasedTriggeringPolicy size="5 KB"/>
             </Policies>
             <DefaultRolloverStrategy max="3"/>
         </RollingFile>
@@ -23,7 +23,7 @@
 
         <root level="trace">
             <appender-ref ref="CONSOLE-INFO" level="info"/>
-            <appender-ref ref="FILE-DEBUG" level="trace"/>
+            <appender-ref ref="FILE-DEBUG" level="debug"/>
         </root>
 
     </Loggers>

@@ -1,6 +1,5 @@
 package com.epam.cardgenerator.cardmodel;
 
-import com.epam.cardgenerator.CardGenerator;
 import com.epam.cardgenerator.utils.numbergenerator.LuhnNumberGenerator;
 import com.epam.cardgenerator.utils.numbergenerator.NumberGenerator;
 import org.apache.logging.log4j.LogManager;
@@ -12,6 +11,11 @@ import org.apache.logging.log4j.Logger;
 public abstract class BasicCard implements Card {
 
     private static final Logger logger = LogManager.getLogger(BasicCard.class);
+
+   /* private final String type =
+            this.getClass().getPackage().getName().substring(
+                    this.getClass().getPackage().getName().lastIndexOf('.') +
+                            1) + " " + this.getClass().getSimpleName();*/
 
     private String bankID;
     private int numberLength;
@@ -26,19 +30,16 @@ public abstract class BasicCard implements Card {
      */
     public BasicCard(String bankID, int numberLength) {
 
-        logger.trace(CardGenerator.METHOD_INPUT_MESSAGE,
-                " public BasicCard(String bankID, int numberLength)",
-                String.format("bankId = %s , numberLength = %d", bankID,
-                        numberLength));
+        logger.debug(
+                "Start creating new card. BankId = {} , Number length = {}",
+                bankID, numberLength);
 
         this.bankID = bankID;
         this.numberLength = numberLength;
 
-        logger.debug("Generating new number");
-
         generateNewNumber();
 
-        logger.debug("Created new card: {}", this);
+        logger.debug("Card creation finished");
     }
 
     @Override
@@ -73,22 +74,8 @@ public abstract class BasicCard implements Card {
     @Override
     public String generateNewNumber() {
 
-        logger.trace(CardGenerator.METHOD_INPUT_MESSAGE,
-                "  public String generateNewNumber()");
-
         number = cardNumberGenerator.generateNumber(bankID, numberLength);
 
-        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
-                "public String generateNewNumber()", number);
-
         return number;
-    }
-
-    @Override
-    public String toString() {
-        return this.getClass().getPackage().getName().
-                substring(this.getClass().getPackage().getName()
-                        .lastIndexOf('.') + 1) + " " +
-                this.getClass().getSimpleName() + ": " + this.getNumber();
     }
 }

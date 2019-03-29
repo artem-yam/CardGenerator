@@ -34,7 +34,12 @@ public class SystemOutputTest {
 
         new ConsoleInfoOutput().outputCardInfo(card);
 
-        String expected = card.toString() + System.lineSeparator();
+        String expected =
+                "Card of type \'" + card.getClass().getPackage().getName().
+                        substring(card.getClass().getPackage().getName()
+                                      .lastIndexOf('.') + 1) + " " +
+                        card.getClass().getSimpleName() + "\' with number " +
+                        card.getNumber() + "\n";
 
         assertEquals(expected, outputStream.toString());
     }

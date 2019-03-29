@@ -1,6 +1,5 @@
 package com.epam.cardgenerator.utils.numbergenerator;
 
-import com.epam.cardgenerator.CardGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,8 +10,8 @@ import java.security.SecureRandom;
  */
 public class LuhnNumberGenerator implements NumberGenerator {
 
-    private static final Logger logger =
-            LogManager.getLogger(LuhnNumberGenerator.class);
+    private static final Logger logger = LogManager.getLogger(
+            LuhnNumberGenerator.class);
 
     private static final SecureRandom RND = new SecureRandom();
     private static final int RADIX = 10;
@@ -25,9 +24,7 @@ public class LuhnNumberGenerator implements NumberGenerator {
      */
     private static int getCheckDigit(String cardNumber) {
 
-        logger.trace(CardGenerator.METHOD_INPUT_MESSAGE,
-                "private static int getCheckDigit(String cardNumber)",
-                "cardNumber = " + cardNumber);
+        logger.debug("Computing check digit for number {}", cardNumber);
 
         int sum = 0;
         int numberRest = ((cardNumber.length() % 2) == 0) ? 1 : 0;
@@ -37,8 +34,9 @@ public class LuhnNumberGenerator implements NumberGenerator {
             if ((i % 2) == numberRest) {
                 digit = digit * 2;
 
-                if (digit > 9)
+                if (digit > 9) {
                     digit = (digit / 10) + (digit % 10);
+                }
             }
             sum += digit;
         }
@@ -47,9 +45,7 @@ public class LuhnNumberGenerator implements NumberGenerator {
 
         int checkDigit = ((mod == 0) ? 0 : 10 - mod);
 
-        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
-                "private static int getCheckDigit(String cardNumber)",
-                checkDigit);
+        logger.debug("Check digit = {}", checkDigit);
 
         return checkDigit;
     }
@@ -57,18 +53,16 @@ public class LuhnNumberGenerator implements NumberGenerator {
     /**
      * Method for generating cards number
      *
-     * @param bankIdNumber - Bank Identification Number (first six digits of generating number)
+     * @param bankIdNumber - Bank Identification Number (first six digits of
+     *                     generating number)
      * @param numberLength - Length of generating number
      * @return Generated cards number
      */
     @Override
     public String generateNumber(String bankIdNumber, int numberLength) {
 
-        logger.trace(CardGenerator.METHOD_INPUT_MESSAGE,
-                "public String generateNumber(String bankIdNumber, " +
-                        "int numberLength)",
-                String.format("bankIdNumber = %s, numberLength = %d",
-                        bankIdNumber, numberLength));
+        logger.debug("Generating new number. Bank ID = {} , Number length = {}",
+                bankIdNumber, numberLength);
 
         int randomNumberLength = numberLength - bankIdNumber.length() - 1;
 
@@ -80,10 +74,7 @@ public class LuhnNumberGenerator implements NumberGenerator {
 
         builder.append(getCheckDigit(builder.toString()));
 
-        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
-                "public String generateNumber(String bankIdNumber, " +
-                        "int numberLength)",
-                builder);
+        logger.debug("Generated number: {}", builder);
 
         return builder.toString();
     }

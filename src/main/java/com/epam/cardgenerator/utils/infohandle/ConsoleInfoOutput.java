@@ -7,14 +7,21 @@ import com.epam.cardgenerator.cardmodel.Card;
  */
 public class ConsoleInfoOutput implements InfoOutput {
 
+    private static final String CARD_INFO =
+            "Card of type \'%s\' with number %s\n";
+
     /**
-     * Method for printing certain card information: it's name, number, validity check
+     * Method for printing certain card information: it's name, number, validity
+     * check
      *
      * @param card card which info you want to print
      */
     @Override
     public void outputCardInfo(Card card) {
-        System.out.println(card);
+        System.out.printf(CARD_INFO, card.getClass().getPackage().getName().
+                substring(card.getClass().getPackage().getName()
+                              .lastIndexOf('.') + 1) + " " +
+                card.getClass().getSimpleName(), card.getNumber());
     }
 
     /**

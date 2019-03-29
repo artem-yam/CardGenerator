@@ -1,11 +1,10 @@
 package com.epam.cardgenerator.cardmodel;
 
-import com.epam.cardgenerator.CardGenerator;
 import com.epam.cardgenerator.cardmodel.mastercard.Electronic;
 import com.epam.cardgenerator.cardmodel.mastercard.Maestro;
 import com.epam.cardgenerator.cardmodel.mastercard.Standard;
-import com.epam.cardgenerator.cardmodel.mir.Debet;
-import com.epam.cardgenerator.cardmodel.mir.Premium;
+import com.epam.cardgenerator.cardmodel.mir.Debit;
+import com.epam.cardgenerator.cardmodel.mir.Premial;
 import com.epam.cardgenerator.cardmodel.visa.Electron;
 import com.epam.cardgenerator.cardmodel.visa.Gold;
 import org.apache.logging.log4j.LogManager;
@@ -16,15 +15,15 @@ import org.apache.logging.log4j.Logger;
  */
 public enum CardTypesEnum {
 
-    VISACLASSIC(com.epam.cardgenerator.cardmodel.visa.Classic.class),
-    VISAELECTRON(Electron.class),
-    VISAGOLD(Gold.class),
-    MASTERCARDSTANDARD(Standard.class),
-    MASTERCARDELECTRONIC(Electronic.class),
-    MASTERCARDMAESTRO(Maestro.class),
-    MIRCLASSIC(com.epam.cardgenerator.cardmodel.mir.Classic.class),
-    MIRPREMIUM(Premium.class),
-    MIRDEBET(Debet.class);
+    VISA_CLASSIC(com.epam.cardgenerator.cardmodel.visa.Classic.class),
+    VISA_ELECTRON(Electron.class),
+    VISA_GOLD(Gold.class),
+    MASTERCARD_STANDARD(Standard.class),
+    MASTERCARD_ELECTRONIC(Electronic.class),
+    MASTERCARD_MAESTRO(Maestro.class),
+    MIR_CLASSIC(com.epam.cardgenerator.cardmodel.mir.Classic.class),
+    MIR_PREMIAL(Premial.class),
+    MIR_DEBIT(Debit.class);
 
     private static final Logger logger = LogManager.getLogger(
             CardTypesEnum.class);
@@ -45,8 +44,7 @@ public enum CardTypesEnum {
      * @return Card class
      */
     public Class getCard() {
-        logger.trace(CardGenerator.METHOD_OUTPUT_MESSAGE,
-                "public Class getCard()", card);
+        logger.debug("Card class: {}", card);
 
         return card;
     }

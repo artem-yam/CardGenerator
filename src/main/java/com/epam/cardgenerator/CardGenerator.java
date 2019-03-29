@@ -2,6 +2,8 @@ package com.epam.cardgenerator;
 
 import com.epam.cardgenerator.cardmodel.Card;
 import com.epam.cardgenerator.utils.CardFactory;
+import com.epam.cardgenerator.utils.infohandle.ConsoleInfoOutput;
+import com.epam.cardgenerator.utils.infohandle.InfoOutput;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,12 +16,10 @@ import java.util.List;
  */
 public class CardGenerator {
 
-    public static final String METHOD_INPUT_MESSAGE =
-            "Method \"{}\" input arguments: {}";
-    public static final String METHOD_OUTPUT_MESSAGE =
-            "Method \"{}\" output value: {}";
     private static final Logger logger = LogManager.getLogger(
             CardGenerator.class);
+
+    private InfoOutput infoOutput = new ConsoleInfoOutput();
 
     /**
      * Program entry point
@@ -42,19 +42,7 @@ public class CardGenerator {
     public Card generateCard(String cardType)
             throws InstantiationException, IllegalAccessException {
 
-        logger.trace(METHOD_INPUT_MESSAGE,
-                "public Card generateCard(String cardType) " +
-                        "throws InstantiationException," +
-                        "IllegalAccessException", "cardType = " + cardType);
-
-        Card generatedCard = CardFactory.getCard(cardType);
-
-        logger.trace(METHOD_OUTPUT_MESSAGE,
-                "public Card generateCard(String cardType) " +
-                        "throws InstantiationException," +
-                        "IllegalAccessException", generatedCard);
-
-        return generatedCard;
+        return CardFactory.getCard(cardType);
     }
 
     /**
@@ -78,7 +66,7 @@ public class CardGenerator {
             try {
                 Card card = generateCard(cardType);
 
-                logger.info(card);
+                infoOutput.outputCardInfo(card);
 
                 cardList.add(card);
             } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
@@ -87,19 +75,16 @@ public class CardGenerator {
             }
         }
 
-        logger.debug("Generated cards:{}",
-                cardList);
+        logger.debug("Generated cards:{}", cardList);
 
         return cardList;
     }
 
     public String getCardNumber(String cardType) {
 
-        logger.trace(METHOD_INPUT_MESSAGE,
-                "public String getCardNumber(String cardType)",
-                "cardType = " + cardType);
+        logger.debug("Trying to get number for card of type \'{}\'", cardType);
 
-        String number = "";
+        String number = null;
         try {
             number = generateCard(cardType).getNumber();
 
@@ -107,9 +92,7 @@ public class CardGenerator {
             logger.error(exception);
         }
 
-        logger.trace(METHOD_OUTPUT_MESSAGE,
-                "public String getCardNumber(String cardType)",
-                number);
+        logger.debug("Card number: {}", number);
 
         return number;
     }

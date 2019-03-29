@@ -41,10 +41,10 @@ public class AppInputParamsTest {
     @Parameterized.Parameters
     public static Collection getParameters() {
         return Arrays.asList(
-                new String[][]{{"mastercardelectronic"}, {"mastercardmaestro"},
-                        {"mastercardstandard"}, {"mirclassic"}, {"mirdebet"},
-                        {"mirpremium"}, {"visaclassic"}, {"visaelectron"},
-                        {"visagold"}, {"4144235"}, {"visa gold"},
+                new String[][]{{"mastercard_electronic"}, {"mastercard_maestro"},
+                        {"mastercard_standard"}, {"mir_classic"}, {"mir_debit"},
+                        {"mir_premial"}, {"visa_classic"}, {"visa_electron"},
+                        {"visa_gold"}, {"11"}, {"mir_gold"},
                         {"wrongType"}});
     }
 
