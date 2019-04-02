@@ -2,7 +2,6 @@ package com.epam.jtc.concurrentPlane;
 
 import com.epam.cardgenerator.CardGenerator;
 import com.epam.cardgenerator.cardmodel.Card;
-import com.epam.cardgenerator.cardmodel.CardTypesEnum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -29,7 +28,7 @@ public class CardNumberCorrectnessTest {
     public static Collection getParameters() {
         List<String[]> parameters = new ArrayList<>();
 
-        for (CardTypesEnum value : CardTypesEnum.values()) {
+        for (CardTypesForTest value : CardTypesForTest.values()) {
             parameters.add(new String[]{value.toString()});
         }
 

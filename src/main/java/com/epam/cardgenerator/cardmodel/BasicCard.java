@@ -12,11 +12,6 @@ public abstract class BasicCard implements Card {
 
     private static final Logger logger = LogManager.getLogger(BasicCard.class);
 
-   /* private final String type =
-            this.getClass().getPackage().getName().substring(
-                    this.getClass().getPackage().getName().lastIndexOf('.') +
-                            1) + " " + this.getClass().getSimpleName();*/
-
     private String bankID;
     private int numberLength;
     private NumberGenerator cardNumberGenerator = new LuhnNumberGenerator();

@@ -1,7 +1,7 @@
 package com.epam.cardgenerator.utils;
 
 import com.epam.cardgenerator.cardmodel.Card;
-import com.epam.cardgenerator.cardmodel.CardTypesEnum;
+import com.epam.cardgenerator.cardmodel.CardType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,7 +27,7 @@ public class CardFactory {
 
         logger.debug("Trying to get a card of type: {}", cardType);
 
-        Card newCard = (Card) CardTypesEnum.valueOf(cardType.toUpperCase())
+        Card newCard = (Card) CardType.valueOf(cardType.toUpperCase())
                                            .getCard().newInstance();
 
         logger.debug("Generated card: {} {}", cardType, newCard.getNumber());

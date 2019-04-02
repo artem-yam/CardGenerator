@@ -2,7 +2,7 @@ package com.epam.jtc.concurrentPlane;
 
 import com.epam.cardgenerator.CardGenerator;
 import com.epam.cardgenerator.cardmodel.Card;
-import com.epam.cardgenerator.cardmodel.CardTypesEnum;
+import com.epam.cardgenerator.cardmodel.CardType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -31,7 +31,7 @@ public class AppInputParamsTest {
 
     private static List<String> getAvailableCardTypes() {
         List<String> types = new ArrayList<>();
-        for (CardTypesEnum type : CardTypesEnum.values()) {
+        for (CardTypesForTest type : CardTypesForTest.values()) {
             types.add(type.toString());
         }
 
@@ -41,7 +41,8 @@ public class AppInputParamsTest {
     @Parameterized.Parameters
     public static Collection getParameters() {
         return Arrays.asList(
-                new String[][]{{"mastercard_electronic"}, {"mastercard_maestro"},
+                new String[][]{{"mastercard_electronic"},
+                        {"mastercard_maestro"},
                         {"mastercard_standard"}, {"mir_classic"}, {"mir_debit"},
                         {"mir_premial"}, {"visa_classic"}, {"visa_electron"},
                         {"visa_gold"}, {"11"}, {"mir_gold"},
@@ -53,8 +54,8 @@ public class AppInputParamsTest {
         try {
             Card card = new CardGenerator().generateCard(cardType);
 
-            Class cardClass = CardTypesEnum.valueOf(cardType.toUpperCase())
-                                           .getCard();
+            Class cardClass = CardType.valueOf(cardType.toUpperCase())
+                    .getCard();
 
             assertTrue(cardClass.isInstance(card));
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {

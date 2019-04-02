@@ -27,7 +27,14 @@ public class CardGenerator {
      * @param args program arguments
      */
     public static void main(String[] args) {
-        new CardGenerator().processGeneration(args);
+        CardGenerator cardGenerator = new CardGenerator();
+        try {
+            cardGenerator.processGeneration(args);
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
+            cardGenerator.infoOutput.outputCardException(exception);
+            logger.error("Can't generate card for type ",
+                    exception);
+        }
     }
 
     /**
@@ -40,7 +47,8 @@ public class CardGenerator {
      * @throws IllegalArgumentException IllegalArgumentException
      */
     public Card generateCard(String cardType)
-            throws InstantiationException, IllegalAccessException {
+            throws InstantiationException, IllegalAccessException,
+            IllegalArgumentException {
 
         return CardFactory.getCard(cardType);
     }
@@ -51,7 +59,9 @@ public class CardGenerator {
      *
      * @param cardTypes String with card types
      */
-    public List<Card> processGeneration(String[] cardTypes) {
+    public List<Card> processGeneration(String[] cardTypes)
+            throws InstantiationException, IllegalAccessException,
+            IllegalArgumentException {
 
         logger.debug("Starting cards generation: {}",
                 Arrays.toString(cardTypes));
@@ -63,16 +73,13 @@ public class CardGenerator {
         List<Card> cardList = new ArrayList<>();
 
         for (String cardType : cardTypes) {
-            try {
-                Card card = generateCard(cardType);
 
-                infoOutput.outputCardInfo(card);
+            Card card = generateCard(cardType);
 
-                cardList.add(card);
-            } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
-                logger.error("Can't generate card for type " + cardType,
-                        exception);
-            }
+            infoOutput.outputCardInfo(card);
+
+            cardList.add(card);
+
         }
 
         logger.debug("Generated cards:{}", cardList);
@@ -80,17 +87,13 @@ public class CardGenerator {
         return cardList;
     }
 
-    public String getCardNumber(String cardType) {
+    public String getCardNumber(String cardType)
+            throws InstantiationException, IllegalAccessException,
+            IllegalArgumentException {
 
         logger.debug("Trying to get number for card of type \'{}\'", cardType);
 
-        String number = null;
-        try {
-            number = generateCard(cardType).getNumber();
-
-        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
-            logger.error(exception);
-        }
+        String number = generateCard(cardType).getNumber();
 
         logger.debug("Card number: {}", number);
 
@@ -98,5 +101,11 @@ public class CardGenerator {
     }
 }
 
-
-
+//TODO ошибку выводить не только в лог, но и в стандартный поток вывода; немного поменять метод вывода ошибки
+//TODO в методах не обрабатывать exception, а прокидывать выше.  ++++++++++
+//TODO сделать нормальный вывод карты, без рефлексии (отдельный метод: вход - карта, выход - строковое представление типа карты).
+//TODO в SystemOutputTest переработать проверку; проверять out и err потоки.
+//TODO LuhnCheckTest подумать как можно переделать
+//TODO ввести тестовый enum с тестовыми значениями
+//TODO возможно объединить CardNumberCorrectnessTest и AppInputParamsTest; пофиксить их
+//TODO CardNumberCorrectnessTest: соответствие платежной системе проверять через тестовую константу в тесте, а не через  getBankId(); и т.д.

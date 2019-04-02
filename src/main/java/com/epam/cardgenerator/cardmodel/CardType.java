@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Enum of cards types
  */
-public enum CardTypesEnum {
+public enum CardType {
 
     VISA_CLASSIC(com.epam.cardgenerator.cardmodel.visa.Classic.class),
     VISA_ELECTRON(Electron.class),
@@ -26,7 +26,7 @@ public enum CardTypesEnum {
     MIR_DEBIT(Debit.class);
 
     private static final Logger logger = LogManager.getLogger(
-            CardTypesEnum.class);
+            CardType.class);
     private Class card;
 
     /**
@@ -34,7 +34,7 @@ public enum CardTypesEnum {
      *
      * @param cardClass - Class of desired enum value
      */
-    CardTypesEnum(Class cardClass) {
+    CardType(Class cardClass) {
         this.card = cardClass;
     }
 
