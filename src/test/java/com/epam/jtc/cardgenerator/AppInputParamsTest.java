@@ -1,14 +1,12 @@
-package com.epam.jtc.concurrentPlane;
+package com.epam.jtc.cardgenerator;
 
 import com.epam.cardgenerator.CardGenerator;
 import com.epam.cardgenerator.cardmodel.Card;
-import com.epam.cardgenerator.cardmodel.CardType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,8 +18,8 @@ import static org.junit.Assert.assertTrue;
 @RunWith(value = Parameterized.class)
 public class AppInputParamsTest {
 
-    private static final List<String> availableCardTypes =
-            getAvailableCardTypes();
+    private static final List<String> validCardTypes =
+            getValidCardTypes();
 
     private String cardType;
 
@@ -29,9 +27,9 @@ public class AppInputParamsTest {
         this.cardType = cardType;
     }
 
-    private static List<String> getAvailableCardTypes() {
+    private static List<String> getValidCardTypes() {
         List<String> types = new ArrayList<>();
-        for (CardTypesForTest type : CardTypesForTest.values()) {
+        for (CardTypeForTest type : CardTypeForTest.values()) {
             types.add(type.toString());
         }
 
@@ -40,13 +38,16 @@ public class AppInputParamsTest {
 
     @Parameterized.Parameters
     public static Collection getParameters() {
-        return Arrays.asList(
-                new String[][]{{"mastercard_electronic"},
-                        {"mastercard_maestro"},
-                        {"mastercard_standard"}, {"mir_classic"}, {"mir_debit"},
-                        {"mir_premial"}, {"visa_classic"}, {"visa_electron"},
-                        {"visa_gold"}, {"11"}, {"mir_gold"},
-                        {"wrongType"}});
+        List<String[]> parameters = new ArrayList<>();
+
+        for (CardTypeForTest value : CardTypeForTest.values()) {
+            parameters.add(new String[]{value.toString()});
+        }
+        parameters.add(new String[]{"11"});
+        parameters.add(new String[]{"mir_gold"});
+        parameters.add(new String[]{"wrongType"});
+
+        return parameters;
     }
 
     @Test
@@ -54,12 +55,12 @@ public class AppInputParamsTest {
         try {
             Card card = new CardGenerator().generateCard(cardType);
 
-            Class cardClass = CardType.valueOf(cardType.toUpperCase())
-                    .getCard();
+            Class cardClass = com.epam.cardgenerator.cardmodel.CardType.valueOf(
+                    cardType.toUpperCase()).getCard();
 
             assertTrue(cardClass.isInstance(card));
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
-            assertTrue(!availableCardTypes.contains(cardType));
+            assertTrue(!validCardTypes.contains(cardType));
         }
 
     }

@@ -8,9 +8,9 @@ import org.apache.logging.log4j.Logger;
 /**
  * Basic class of all cards
  */
-public abstract class BasicCard implements Card {
+public abstract class AbstractCard implements Card {
 
-    private static final Logger logger = LogManager.getLogger(BasicCard.class);
+    private static final Logger logger = LogManager.getLogger(AbstractCard.class);
 
     private String bankID;
     private int numberLength;
@@ -23,7 +23,7 @@ public abstract class BasicCard implements Card {
      * @param bankID       bank id number
      * @param numberLength length of the card number
      */
-    public BasicCard(String bankID, int numberLength) {
+    public AbstractCard(String bankID, int numberLength) {
 
         logger.debug(
                 "Start creating new card. BankId = {} , Number length = {}",

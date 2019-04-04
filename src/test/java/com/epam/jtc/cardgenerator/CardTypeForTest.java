@@ -1,9 +1,9 @@
-package com.epam.jtc.concurrentPlane;
+package com.epam.jtc.cardgenerator;
 
 /**
  * Enum of cards types
  */
-public enum CardTypesForTest {
+public enum CardTypeForTest {
 
     VISA_CLASSIC,
     VISA_ELECTRON,

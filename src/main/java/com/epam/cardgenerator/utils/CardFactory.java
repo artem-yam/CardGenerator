@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Class-factory for getting cards class instance depending on card type
  */
-public class CardFactory {
+public final class CardFactory {
 
     private static final Logger logger = LogManager.getLogger(
             CardFactory.class);
@@ -27,8 +27,8 @@ public class CardFactory {
 
         logger.debug("Trying to get a card of type: {}", cardType);
 
-        Card newCard = (Card) CardType.valueOf(cardType.toUpperCase())
-                                           .getCard().newInstance();
+        Card newCard = (Card) CardType.valueOf(cardType.toUpperCase()).getCard()
+                                      .newInstance();
 
         logger.debug("Generated card: {} {}", cardType, newCard.getNumber());
 

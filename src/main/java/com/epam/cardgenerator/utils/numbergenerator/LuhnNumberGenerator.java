@@ -29,7 +29,7 @@ public class LuhnNumberGenerator implements NumberGenerator {
         int sum = 0;
         int numberRest = ((cardNumber.length() % 2) == 0) ? 1 : 0;
         for (int i = 0; i < cardNumber.length(); i++) {
-            int digit = Integer.parseInt(cardNumber.substring(i, (i + 1)));
+            int digit = Integer.parseInt(cardNumber.substring(i, i + 1));
 
             if ((i % 2) == numberRest) {
                 digit = digit * 2;
@@ -43,7 +43,7 @@ public class LuhnNumberGenerator implements NumberGenerator {
 
         int mod = sum % 10;
 
-        int checkDigit = ((mod == 0) ? 0 : 10 - mod);
+        int checkDigit = (mod == 0) ? 0 : 10 - mod;
 
         logger.debug("Check digit = {}", checkDigit);
 

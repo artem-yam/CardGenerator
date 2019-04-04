@@ -32,8 +32,7 @@ public class CardGenerator {
             cardGenerator.processGeneration(args);
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException exception) {
             cardGenerator.infoOutput.outputCardException(exception);
-            logger.error("Can't generate card for type ",
-                    exception);
+            logger.error("Can't generate card for some type ", exception);
         }
     }
 
@@ -101,11 +100,13 @@ public class CardGenerator {
     }
 }
 
-//TODO ошибку выводить не только в лог, но и в стандартный поток вывода; немного поменять метод вывода ошибки
-//TODO в методах не обрабатывать exception, а прокидывать выше.  ++++++++++
-//TODO сделать нормальный вывод карты, без рефлексии (отдельный метод: вход - карта, выход - строковое представление типа карты).
-//TODO в SystemOutputTest переработать проверку; проверять out и err потоки.
-//TODO LuhnCheckTest подумать как можно переделать
-//TODO ввести тестовый enum с тестовыми значениями
-//TODO возможно объединить CardNumberCorrectnessTest и AppInputParamsTest; пофиксить их
-//TODO CardNumberCorrectnessTest: соответствие платежной системе проверять через тестовую константу в тесте, а не через  getBankId(); и т.д.
+//TODO + 1) ошибку выводить не только в лог, но и в стандартный поток вывода;
+//TODO +? 2) в методах не обрабатывать exception, а прокидывать выше.
+//TODO + 3) сделать нормальный вывод карты.
+//TODO +? 4) в SystemOutputTest проверять и out, и err потоки.
+//TODO + 5) LuhnCheckTest подумать как можно переделать
+//TODO + 6) ввести тестовый enum с тестовыми значениями
+//TODO +- 7) мб объединить CardNumberCorrectnessTest и AppInputParamsTest;
+// пофиксить их
+//TODO + 8) CardNumberCorrectnessTest: соответствие платежной системе проверять
+// через тестовую константу в тесте, а не через  getBankId(); и т.д.

@@ -1,11 +1,11 @@
 package com.epam.cardgenerator.cardmodel.mastercard;
 
-import com.epam.cardgenerator.cardmodel.BasicCard;
+import com.epam.cardgenerator.cardmodel.AbstractCard;
 
 /**
  * Class for generating number of MasterCard Electronic cards
  */
-public class Electronic extends BasicCard {
+public class Electronic extends AbstractCard {
 
     private static final String BANK_ID_NUMBER = "511111";
     

@@ -1,11 +1,11 @@
 package com.epam.cardgenerator.cardmodel.visa;
 
-import com.epam.cardgenerator.cardmodel.BasicCard;
+import com.epam.cardgenerator.cardmodel.AbstractCard;
 
 /**
  * Class for generating number of Visa Classic cards
  */
-public class Classic extends BasicCard {
+public class Classic extends AbstractCard {
 
     private static final String BANK_ID_NUMBER = "477777";
     private static final int CARD_NUMBER_LENGTH = 16;
