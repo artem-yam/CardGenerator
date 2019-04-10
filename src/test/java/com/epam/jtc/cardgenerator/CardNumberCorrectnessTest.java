@@ -19,7 +19,7 @@ public class CardNumberCorrectnessTest {
     private static List<String> MASTERCARD = new ArrayList<>();
     private static List<String> MIR = new ArrayList<>();
     private static List<String> VISA = new ArrayList<>();
-    private static int numberLength = 16;
+    private static int NUMBER_LENGTH = 16;
 
     private Card testedCard;
     private CardTypeForTest cardType;
@@ -45,7 +45,7 @@ public class CardNumberCorrectnessTest {
     public static boolean luhnCheck(String cardNumber) {
 
         String reverseNumber = new StringBuffer(cardNumber).reverse()
-                                                           .toString();
+                .toString();
 
         int oddPositionNumbersSum = 0;
         int evenPositionNumbersSum = 0;
@@ -106,7 +106,7 @@ public class CardNumberCorrectnessTest {
             fail();
         }
 
-        assertEquals(numberLength, testedCard.getNumber().length());
+        assertEquals(NUMBER_LENGTH, testedCard.getNumber().length());
 
         boolean isBankIDValid = false;
 

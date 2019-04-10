@@ -15,6 +15,7 @@ public class LuhnNumberGenerator implements NumberGenerator {
 
     private static final SecureRandom RND = new SecureRandom();
     private static final int RADIX = 10;
+    private static final int EVEN_CHECK = 2;
 
     /**
      * Method to get last digit of card number with Luhn algorithm
@@ -27,23 +28,23 @@ public class LuhnNumberGenerator implements NumberGenerator {
         logger.debug("Computing check digit for number {}", cardNumber);
 
         int sum = 0;
-        int numberRest = ((cardNumber.length() % 2) == 0) ? 1 : 0;
+        int numberRest = ((cardNumber.length() % EVEN_CHECK) == 0) ? 1 : 0;
         for (int i = 0; i < cardNumber.length(); i++) {
             int digit = Integer.parseInt(cardNumber.substring(i, i + 1));
 
-            if ((i % 2) == numberRest) {
-                digit = digit * 2;
+            if ((i % EVEN_CHECK) == numberRest) {
+                digit = digit * EVEN_CHECK;
 
-                if (digit > 9) {
-                    digit = (digit / 10) + (digit % 10);
+                if (digit > RADIX - 1) {
+                    digit -= RADIX - 1;
                 }
             }
             sum += digit;
         }
 
-        int mod = sum % 10;
+        int mod = sum % RADIX;
 
-        int checkDigit = (mod == 0) ? 0 : 10 - mod;
+        int checkDigit = (mod == 0) ? 0 : RADIX - mod;
 
         logger.debug("Check digit = {}", checkDigit);
 

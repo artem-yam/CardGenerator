@@ -99,14 +99,3 @@ public class CardGenerator {
         return number;
     }
 }
-
-//TODO + 1) ошибку выводить не только в лог, но и в стандартный поток вывода;
-//TODO +? 2) в методах не обрабатывать exception, а прокидывать выше.
-//TODO + 3) сделать нормальный вывод карты.
-//TODO +? 4) в SystemOutputTest проверять и out, и err потоки.
-//TODO + 5) LuhnCheckTest подумать как можно переделать
-//TODO + 6) ввести тестовый enum с тестовыми значениями
-//TODO +- 7) мб объединить CardNumberCorrectnessTest и AppInputParamsTest;
-// пофиксить их
-//TODO + 8) CardNumberCorrectnessTest: соответствие платежной системе проверять
-// через тестовую константу в тесте, а не через  getBankId(); и т.д.
